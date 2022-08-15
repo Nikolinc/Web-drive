@@ -4,6 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { triggerAsyncId } from 'async_hooks';
 import { User } from './users/users.modul';
 import { UsersModule } from './users/users.module';
+import { FileDirectoryModule } from './file-directory/file-directory.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UsersModule } from './users/users.module';
       autoLoadModels: true,
     }),
     UsersModule,
+    FileDirectoryModule,
   ],
 })
 export class AppModule {}
