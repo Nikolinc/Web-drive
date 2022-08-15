@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { triggerAsyncId } from 'async_hooks';
+import { User } from './users/users.modul';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,10 +17,10 @@ import { SequelizeModule } from '@nestjs/sequelize';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [],
+      models: [User],
       autoLoadModels: true,
-    })],
-  controllers: [],
-  providers: [],
+    }),
+    UsersModule,
+  ],
 })
 export class AppModule {}
